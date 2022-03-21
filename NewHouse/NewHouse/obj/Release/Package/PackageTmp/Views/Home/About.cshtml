@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Sobre";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">Desafio técnico</h1>
+    <h2 class="">Seleção de famílias aptas a ganharem uma casa popular</h2>
+
+    <br />
+
+    <p class="lead">
+        Temos um produto e recebemos o desafio de gerar uma lista de pessoas aptas a ganhar uma casa popular do governo, tendo como única exigência que essa lista esteja ordenada de forma mais justa possível com um somatório de pontos, analisando aspectos das famílias que estão participando. São considerados os seguintes critérios para a construção das pontuações:
+    </p>
+
+    <ul>
+        <li>Renda total da família até 900 reais - valendo 5 pontos;</li>
+        <li>Renda total da família de 901 à 1500 reais - valendo 3 pontos;</li>
+        <li>Famílias com 3 ou mais dependentes  (lembrando que dependentes maiores de 18 anos não contam) - valendo 3 pontos;</li>
+        <li>Famílias com 1 ou 2 dependentes  (lembrando que dependentes maiores de 18 anos não contam) - valendo 2 pontos.</li>
+    </ul>
+
+    <hr class="my-4">
+
+    <p>
+        O código que faz essa análise hoje é totalmente procedural, repleto de blocos if/else pra analisar e montar as classificações e nos dá muito custo de manutenção, nos motivando a procurar uma nova solução para este problema. Seu desafio é justamente isso, codificar uma forma melhor de chegar no mesmo resultado usando e abusando da orientação à objetos, criando classes e métodos de uma forma que fique tudo mais legível e fácil de manter e estender.
+    </p>
+
+    <p>
+        Falando sobre estender, o cliente já deixou um alerta ligado de que irão incluir novos critérios na avaliação das famílias em breve, assim que forem aprovados pelo governador, então temos que ter uma solução preparada para adicioná-los sem muito custo de implementação.
+    </p>
+
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="https://www.notion.so/Desafio-t-cnico-2f53347cf16a418fb75c67c978ab1a0e" role="button">Saiba mais</a>
+    </p>
+</div>

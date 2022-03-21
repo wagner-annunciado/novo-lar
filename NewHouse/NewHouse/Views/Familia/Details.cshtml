@@ -1,0 +1,74 @@
+﻿@model NewHouse.Models.Familia
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2 style="text-align: center;">DETALHES</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Renda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Renda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contato.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contato.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contato.Telefone)
+        </dt>
+
+        <dd>
+            (@Html.DisplayFor(model => model.Contato.Telefone.DDD)) @Html.DisplayFor(model => model.Contato.Telefone.Numero) | Tipo: @Html.DisplayNameFor(model => model.Contato.Telefone.Tipo)
+        </dd>
+
+        <dt>
+            Não dependentes
+        </dt>
+
+        <dd>
+            @foreach (var naoDependente in Model.NaoDependentes)
+            {
+                <p>@naoDependente.Nome - [@naoDependente.Idade] Anos | <b>CPF:@naoDependente.CPF</b> | Renda:R$@naoDependente.Renda</p>
+            }
+        </dd>
+
+        <dt>
+            Dependentes
+        </dt>
+
+        <dd>
+            @foreach (var dependente in Model.Dependentes)
+            {
+
+                var debilitado = @dependente.Debilitado ? "Sim" : "Não";
+
+
+                <p>@dependente.Nome - @dependente.Idade Anos | CPF:<b>@dependente.CPF</b> | Debilitada:@debilitado</p>
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

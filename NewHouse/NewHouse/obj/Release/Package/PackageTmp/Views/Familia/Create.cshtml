@@ -1,0 +1,114 @@
+﻿@model NewHouse.Models.Familia
+
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<h2 style="text-align: center;">CADASTRO</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <label for="codigo">Código da família:</label>
+            <div class="w3-light-grey w3-padding-32 w3-center">
+                <small id="codigo" name="Codigo" class="w3-jumbo">@ViewBag.Codigo</small>
+                <input type="text" class="form-control" name="Codigo" value="@ViewBag.Codigo" style="visibility: hidden;">
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="w3-container w3-light-grey">
+                Contato
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" class="form-control" name="Contato.Email" aria-describedby="emailHelp" style="width: 100%;">
+                <small id="emailHelp" class="form-text text-muted">*Nunca compartilharemos seu e-mail com mais ninguém.</small>
+            </div>
+
+            <div class="form-group col-md-1">
+                <label for="ddd">DDD:</label>
+                <input type="number" id="ddd" class="form-control" name="Contato.Telefone.DDD" data-mask="00" data-mask-selectonfocus="true">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" class="form-control" name="Contato.Telefone.Numero" data-mask="00000-0000" data-mask-selectonfocus="true">
+            </div>
+
+            <div class="col-md-2">
+                <label for="tipo-telefone">Tipo:</label>
+                <select class="form-control" id="tipo-telefone" data-val="true" data-val-required="O campo Tipo: é obrigatório." name="Contato.Telefone.Tipo">
+                    <option selected="selected" value="0">Residencial</option>
+                    <option value="1">Comercial</option>
+                    <option value="2">Celular</option>
+                    <option value="3">Recado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="w3-container w3-light-grey">
+                Endereço
+            </div>
+            <div class="form-group col-md-5">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" class="form-control" name="Endereco.Cep" data-mask="00000-000" data-mask-selectonfocus="true">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="casa-numero">Número:</label>
+                <input type="number" id="casa-numero" class="form-control" name="Endereco.Numero" data-mask="000" data-mask-selectonfocus="true">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="w3-container w3-light-grey">
+                Não Dependentes
+            </div>
+            <small class="form-text text-muted">*Pessoas que possuem uma renda e morarão na mesma casa.</small>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <button class="btn btn-primary form-control" id="btn-add-nao-dependente">Novo não dependente</button>
+                </div>
+                <div class="col-md-12" id="div-nao-dependentes"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="w3-container w3-light-grey">
+                Dependentes
+            </div>
+            <small class="form-text text-muted">*Pessoas que <span style="color:red;">NÃO</span> possuem uma renda e morarão na mesma casa.</small>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <button class="btn btn-primary form-control" id="btn-add-dependente">Novo dependente</button>
+                </div>
+                <div class="col-md-12" id="div-dependentes"></div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <div class=" col-md-10">
+                @Html.ActionLink("Cancelar", "Index", "Familia", new object { }, new { @class = "btn btn-default" })
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/Dependente/criação-dependente.js"></script>
+    <script src="~/Scripts/NãoDependente/criação-nãodependente.js"></script>
+    <script src="~/Scripts/Mask Plugin/jquery.mask.js"></script>
+}

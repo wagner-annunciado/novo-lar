@@ -1,0 +1,41 @@
+﻿@model NewHouse.Models.Familia
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<div>
+    <div class="w3-container w3-teal">
+        <h1>Lista - Programa NewHouse</h1>
+    </div>
+
+    <table class="table table-sm">
+        @if (ViewBag.Familias.Count == 0)
+        {
+            <tr>
+                <td colspan="10">Nenhum registro encontrado.</td>
+            </tr>
+        }
+        else
+        {
+            <thead>
+                <tr class="danger">
+                    <th scope="col">#</th>
+                    <th scope="col">Cógido</th>
+                    <th scope="col">Pontos no programa</th>
+                </tr>
+            </thead>
+
+            int prioridade = 0;
+
+            foreach (var familia in ViewBag.Familias)
+            {
+                <tr>
+                    <th scope="row">@(prioridade += 1)</th>
+                    <td style="color: blue;">@(Html.ActionLink((string)familia.Codigo, "Details", new { id = familia.Id }))</td>
+                    <td>@familia.Pontos</td>
+                </tr>
+            }
+        }
+    </table>
+</div> 

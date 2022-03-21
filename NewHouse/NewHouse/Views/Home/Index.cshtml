@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1 style="text-align: center;">Programa NewHouse</h1>
+    <p class="lead">Famílias aptas a ganhar uma casa popular do governo, tendo como única exigência que essa lista esteja ordenada de forma mais justa possível com um somatório de pontos, analisando aspectos das famílias que estão participando.</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        @Html.ActionLink("Lista", "List", "Familia", new object { }, new { @class = "btn btn-primary btn-lg btn-block" })
+    </div>
+    <div class="col-lg-6">
+        @Html.ActionLink("Cadastro", "Index", "Familia", new object { }, new { @class = "btn btn-warning btn-lg btn-block" })
+    </div>
+</div>
